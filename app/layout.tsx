@@ -1,9 +1,14 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  weight: ["600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   title: "Invicar | Carrocerías para Buses, Busetas y Midibuses",
@@ -108,7 +113,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} bg-background`}>
+    <html
+      lang="es"
+      className={`${inter.variable} ${archivo.variable} bg-background`}
+    >
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"

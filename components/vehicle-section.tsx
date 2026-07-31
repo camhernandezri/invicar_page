@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ProjectCarousel } from "@/components/project-carousel"
-import { Gallery3D } from "@/components/gallery-3d"
+import { useState } from "react";
+import { ProjectCarousel } from "@/components/project-carousel";
+import { Gallery3D } from "@/components/gallery-3d";
 
 type Project = {
-  src: string
-  alt: string
-  caption: string
-}
+  src: string;
+  alt: string;
+  caption: string;
+};
 
 type VehicleSectionProps = {
-  id: string
-  title: string
-  subtitle: string
-  description: string
-  backgroundImage: string
-  projects: Project[]
-}
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  backgroundImage: string;
+  projects: Project[];
+};
 
 export function VehicleSection({
   id,
@@ -27,7 +27,7 @@ export function VehicleSection({
   backgroundImage,
   projects,
 }: VehicleSectionProps) {
-  const [galleryIndex, setGalleryIndex] = useState<number | null>(null)
+  const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -44,7 +44,7 @@ export function VehicleSection({
       </div>
 
       <div className="relative z-10 mx-auto mt-12 max-w-3xl px-6 text-center">
-        <h2 className="text-4xl font-semibold tracking-[0.3em] text-white sm:text-6xl">
+        <h2 className="font-display text-4xl font-semibold tracking-[0.3em] text-white sm:text-6xl">
           {title}
         </h2>
         <div className="mx-auto mt-4 h-px w-20 bg-brand-gold" />
@@ -71,5 +71,5 @@ export function VehicleSection({
         />
       )}
     </section>
-  )
+  );
 }

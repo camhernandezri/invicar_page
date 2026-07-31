@@ -14,7 +14,7 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mt-16 flex flex-col items-center text-center">
-        <h1 className="text-5xl font-semibold tracking-[0.4em] text-white sm:text-7xl md:text-8xl">
+        <h1 className="font-display text-5xl font-semibold tracking-[0.4em] text-white sm:text-7xl md:text-8xl">
           INVI<span className="text-brand-gold">CAR</span>
         </h1>
         <div className="mt-6 h-px w-24 bg-brand-gold" />
@@ -38,5 +38,5 @@ export function HeroSection() {
         </a>
       </div>
     </section>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Target, Eye } from "lucide-react"
+import { Target, Eye } from "lucide-react";
 
 const pillars = [
   {
@@ -11,7 +11,7 @@ const pillars = [
     title: "Visión",
     text: "Ser reconocidos en 2030 como la carrocera líder en Colombia y referente en Latinoamérica, destacándonos por la excelencia en ingeniería, el desarrollo sostenible y la satisfacción integral de nuestros clientes.",
   },
-]
+];
 
 const milestones = [
   {
@@ -56,7 +56,7 @@ const milestones = [
       "Nuestras carrocerías recorren hoy distintas regiones de Colombia, consolidando a Invicar como referente del sector.",
     image: "/images/buseta4.jpeg",
   },
-]
+];
 
 export function AboutSection() {
   return (
@@ -78,13 +78,13 @@ export function AboutSection() {
           <span className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
             Quiénes somos
           </span>
-          <h2 className="mt-4 text-4xl font-semibold tracking-[0.3em] text-white sm:text-6xl">
+          <h2 className="font-display mt-4 text-4xl font-semibold tracking-[0.3em] text-white sm:text-6xl">
             NOSOTROS
           </h2>
           <div className="mx-auto mt-4 h-px w-20 bg-brand-gold" />
           <p className="mx-auto mt-4 max-w-xl text-pretty text-sm leading-relaxed text-white/65">
-            Más de una década construyendo carrocerías que transforman la
-            manera en que Colombia se mueve.
+            Más de una década construyendo carrocerías que transforman la manera
+            en que Colombia se mueve.
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export function AboutSection() {
             <span className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
               Nuestro recorrido
             </span>
-            <h3 className="mt-4 text-3xl font-semibold tracking-[0.25em] text-white sm:text-4xl">
+            <h3 className="font-display mt-4 text-3xl font-semibold tracking-[0.25em] text-white sm:text-4xl">
               HISTORIA
             </h3>
             <div className="mx-auto mt-4 h-px w-20 bg-brand-gold" />
@@ -124,8 +124,8 @@ export function AboutSection() {
 
             <div className="space-y-10">
               {milestones.map((item, index) => {
-                const isLeft = index % 2 === 0
-                
+                const isLeft = index % 2 === 0;
+
                 const card = (
                   <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-brand-gold/40">
                     {/* Imagen de fondo */}
@@ -136,7 +136,7 @@ export function AboutSection() {
                         className="absolute inset-0 h-full w-full object-cover opacity-30 pointer-events-none transition-transform duration-500 hover:scale-105"
                       />
                     )}
-                    
+
                     {/* Capa de oscurecimiento interna para que el texto blanco resalte al 100% */}
                     <div className="absolute inset-0 bg-brand-blue-dark/50 pointer-events-none" />
 
@@ -153,7 +153,7 @@ export function AboutSection() {
                       </p>
                     </div>
                   </div>
-                )
+                );
 
                 return (
                   <div
@@ -176,12 +176,12 @@ export function AboutSection() {
                       </>
                     )}
                   </div>
-                )
+                );
               })}
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

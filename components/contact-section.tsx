@@ -80,7 +80,7 @@ export function ContactSection() {
           <span className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
             Hablemos de tu proyecto
           </span>
-          <h2 className="mt-4 text-4xl font-semibold tracking-[0.15em] text-white text-balance sm:text-5xl">
+          <h2 className="font-display mt-4 text-4xl font-semibold tracking-[0.15em] text-white text-balance sm:text-5xl">
             CONTÁCTANOS
           </h2>
           <div className="mx-auto mt-4 h-px w-20 bg-brand-gold" />

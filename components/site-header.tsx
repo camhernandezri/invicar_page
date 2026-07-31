@@ -14,7 +14,7 @@ export function SiteHeader() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a
           href="#inicio"
-          className="text-lg font-semibold tracking-[0.35em] text-white"
+          className="font-display text-lg font-semibold tracking-[0.35em] text-white"
         >
           INVI<span className="text-brand-gold">CAR</span>
         </a>
