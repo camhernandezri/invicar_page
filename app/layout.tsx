@@ -83,6 +83,25 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0a",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Invicar",
+  image: "https://invicar.com/images/portada-invicar.jpg",
+  url: "https://invicar.com",
+  telephone: "+57 300 123 4567",
+  email: "comercial@invicar.com.co",
+  description:
+    "Fabricación de carrocerías para buses, busetas y midibuses en Duitama, Boyacá, Colombia.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Parque Industrial",
+    addressLocality: "Duitama",
+    addressRegion: "Boyacá",
+    addressCountry: "CO",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -91,6 +110,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
