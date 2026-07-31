@@ -8,47 +8,47 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 const busProjects = [
   {
     src: "/images/bus1.jpeg",
-    alt: "Descripción para bus 1",
+    alt: "Acabados traseros de alta calidad en bus fabricado por Invicar",
     caption: "Acabados traseros de alta calidad",
   },
   {
     src: "/images/bus2.jpeg",
-    alt: "Descripción para bus 2",
+    alt: "Vista lateral de bus fabricado por Invicar",
     caption: "Vista lateral bus",
   },
   {
     src: "/images/bus3.jpeg",
-    alt: "Descripción para bus 3",
+    alt: "Vista panorámica de las ventanas de un bus Invicar",
     caption: "Vista panoramica y ventanas",
   },
   {
     src: "/images/bus4.jpeg",
-    alt: "Descripción para bus 4",
+    alt: "Bodega de equipaje de un bus fabricado por Invicar",
     caption: "Bodega bus",
   },
   {
     src: "/images/bus5.jpeg",
-    alt: "Descripción para bus 5",
+    alt: "Acabados interiores de lujo en un bus Invicar",
     caption: "Acabados interior de lujo",
   },
   {
     src: "/images/bus6.jpeg",
-    alt: "Descripción para bus 6",
+    alt: "Entrada y maleteros de alta calidad en un bus Invicar",
     caption: "Entrada y maleteros de alta calidad",
   },
   {
     src: "/images/bus7.jpeg",
-    alt: "Descripción para bus 7",
+    alt: "Vista lateral de otro bus fabricado por Invicar",
     caption: "Vista lateral bus",
   },
   {
     src: "/images/bus8.jpeg",
-    alt: "Descripción para bus 8",
+    alt: "Vista frontal y entrada de un bus Invicar",
     caption: "Vista Frontal y Entrada",
   },
   {
     src: "/images/bus9.jpeg",
-    alt: "Descripción para bus 9",
+    alt: "Pintura de alta calidad y luces de un bus Invicar",
     caption: "Pintura de alta calidad y luces",
   },
 ]
@@ -56,32 +56,32 @@ const busProjects = [
 const busetaProjects = [
   {
     src: "/images/buseta1.jpeg",
-    alt: "Descripción para buseta 1",
+    alt: "Busetas finalizadas fabricadas por Invicar",
     caption: "Busetas finalizadas",
   },
   {
     src: "/images/buseta2.jpeg",
-    alt: "Descripción para buseta 2",
+    alt: "Interior de alta calidad de una buseta Invicar",
     caption: "Interior de alta calidad",
   },
   {
     src: "/images/buseta3.jpeg",
-    alt: "Descripción para buseta 3",
+    alt: "Vista frontal de una buseta fabricada por Invicar",
     caption: "Vista frontal",
   },
   {
     src: "/images/buseta4.jpeg",
-    alt: "Descripción para buseta 4",
+    alt: "Acabados de puertas de una buseta Invicar",
     caption: "Acabados de puertas",
   },
   {
     src: "/images/buseta5.jpeg",
-    alt: "Descripción para buseta 5",
+    alt: "Vista posterior de una buseta fabricada por Invicar",
     caption: "Vista posterior buseta",
   },
   {
     src: "/images/buseta6.jpeg",
-    alt: "Descripción para buseta 6",
+    alt: "Acabados de alta calidad en una buseta Invicar",
     caption: "Acabados de alta calidad",
   },
 ]
@@ -89,77 +89,77 @@ const busetaProjects = [
 const midibusProjects = [
   {
     src: "/images/midibus1.jpeg",
-    alt: "Descripción para midibus 1",
+    alt: "Vista posterior y lateral de un midibús Invicar",
     caption: "Vista posterior/lateral",
   },
   {
     src: "/images/midibus2.jpeg",
-    alt: "Descripción para midibus 2",
+    alt: "Acabados de alta calidad en un midibús Invicar",
     caption: "Acabados de alta calidad",
   },
   {
     src: "/images/midibus3.jpeg",
-    alt: "Descripción para midibus 3",
+    alt: "Vista lateral de las ventanas de un midibús Invicar",
     caption: "Vista lateral ventanas",
   },
   {
     src: "/images/midibus4.jpeg",
-    alt: "Descripción para midibus 4",
+    alt: "Parte frontal y baja de un midibús Invicar",
     caption: "Parte frontal/baja",
   },
   {
     src: "/images/midibus5.jpeg",
-    alt: "Descripción para midibus 5",
+    alt: "Entrada finalizada de un midibús Invicar",
     caption: "Entradas finalizadas",
   },
   {
     src: "/images/midibus6.jpeg",
-    alt: "Descripción para midibus 6",
+    alt: "Pintura de alta calidad en un midibús Invicar",
     caption: "Pintura de alta calidad",
   },
   {
     src: "/images/midibus7.jpeg",
-    alt: "Descripción para midibus 7",
+    alt: "Parte posterior de un midibús Invicar",
     caption: "Parte posterior",
   },
   {
     src: "/images/midibus8.jpeg",
-    alt: "Descripción para midibus 8",
+    alt: "Acabados internos de alta calidad en un midibús Invicar",
     caption: "Acabados internos de alta calidad",
   },
   {
     src: "/images/midibus9.jpeg",
-    alt: "Descripción para midibus 9",
+    alt: "Escaleras de entrada de alta calidad en un midibús Invicar",
     caption: "Escaleras entrada de alta calidad",
   },
   {
     src: "/images/midibus10.jpeg",
-    alt: "Descripción para midibus 10",
+    alt: "Acabados internos de alta calidad en otro midibús Invicar",
     caption: "Acabados internos de alta calidad",
   },
   {
     src: "/images/midibus11.jpeg",
-    alt: "Descripción para midibus 11",
+    alt: "Zona del conductor en un midibús Invicar",
     caption: "Zona conductor",
   },
   {
     src: "/images/midibus12.jpeg",
-    alt: "Descripción para midibus 12",
+    alt: "Acabados internos de un midibús Invicar",
     caption: "Acabados internos",
   },
   {
     src: "/images/midibus13.jpeg",
-    alt: "Descripción para midibus 13",
+    alt: "Acabados internos de otro midibús Invicar",
     caption: "Acabados internos",
   },
   {
     src: "/images/midibus14.jpeg",
-    alt: "Descripción para midibus 14",
+    alt: "Vista frontal y lateral de un midibús Invicar",
     caption: "Vista Frontal/Lateral",
   },
   {
     src: "/images/midibus15.jpeg",
-    alt: "Descripción para midibus 15",
+    alt: "Midibuses fabricados por Invicar",
     caption: "Midibuses Invicar",
   },
 ]

@@ -1,58 +1,64 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Project = {
-  src: string
-  alt: string
-  caption: string
-}
+  src: string;
+  alt: string;
+  caption: string;
+};
 
 type ProjectCarouselProps = {
-  projects: Project[]
-  onOpenGallery?: (index: number) => void
-}
+  projects: Project[];
+  onOpenGallery?: (index: number) => void;
+};
 
-export function ProjectCarousel({ projects, onOpenGallery }: ProjectCarouselProps) {
-  const scrollerRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
+export function ProjectCarousel({
+  projects,
+  onOpenGallery,
+}: ProjectCarouselProps) {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const updateArrows = useCallback(() => {
-    const el = scrollerRef.current
-    if (!el) return
-    setCanScrollLeft(el.scrollLeft > 8)
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 8)
-  }, [])
+    const el = scrollerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 8);
+  }, []);
 
   useEffect(() => {
-    const el = scrollerRef.current
-    if (!el) return
-    updateArrows()
-    el.addEventListener("scroll", updateArrows, { passive: true })
-    window.addEventListener("resize", updateArrows)
+    const el = scrollerRef.current;
+    if (!el) return;
+    updateArrows();
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
     return () => {
-      el.removeEventListener("scroll", updateArrows)
-      window.removeEventListener("resize", updateArrows)
-    }
-  }, [updateArrows])
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
+    };
+  }, [updateArrows]);
 
   const scrollByAmount = useCallback((dir: "left" | "right") => {
-    const el = scrollerRef.current
-    if (!el) return
-    const amount = el.clientWidth * 0.8
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" })
-  }, [])
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  }, []);
 
   const handleNextClick = useCallback(() => {
     if (canScrollRight) {
-      scrollByAmount("right")
-      return
+      scrollByAmount("right");
+      return;
     }
     // Llegamos al final del scroll horizontal: abrir la galería 3D infinita
-    onOpenGallery?.(0)
-  }, [canScrollRight, scrollByAmount, onOpenGallery])
+    onOpenGallery?.(0);
+  }, [canScrollRight, scrollByAmount, onOpenGallery]);
 
   return (
     <div className="relative">
@@ -89,7 +95,16 @@ export function ProjectCarousel({ projects, onOpenGallery }: ProjectCarouselProp
           <figure
             key={project.src}
             onClick={() => onOpenGallery?.(index)}
-            className="group relative aspect-4/3 w-72 flex-none cursor-pointer snap-start overflow-hidden rounded-xl border border-white/10 bg-white/2 transition-colors hover:border-brand-gold/50 sm:w-80"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onOpenGallery?.(index);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Abrir galería: ${project.caption}`}
+            className="group relative aspect-4/3 w-72 flex-none cursor-pointer snap-start overflow-hidden rounded-xl border border-white/10 bg-white/2 transition-colors hover:border-brand-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:w-80"
           >
             <img
               src={project.src || "/placeholder.svg"}
@@ -106,5 +121,5 @@ export function ProjectCarousel({ projects, onOpenGallery }: ProjectCarouselProp
         ))}
       </div>
     </div>
-  )
+  );
 }
