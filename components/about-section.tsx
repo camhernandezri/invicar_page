@@ -126,7 +126,6 @@ export function AboutSection() {
               {milestones.map((item, index) => {
                 const isLeft = index % 2 === 0
                 
-                // TARJETA MODIFICADA AQUÍ
                 const card = (
                   <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-brand-gold/40">
                     {/* Imagen de fondo */}
