@@ -1,14 +1,15 @@
-import { NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-const DESTINATION_EMAIL = "camhernandezri@gmail.com"
+const DESTINATION_EMAIL = "camhernandezri@gmail.com";
 
 type ContactPayload = {
-  nombre?: string
-  telefono?: string
-  tipo?: string
-  mensaje?: string
-}
+  nombre?: string;
+  telefono?: string;
+  tipo?: string;
+  mensaje?: string;
+  empresa_web?: string;
+};
 
 function escapeHtml(value: string) {
   return value
@@ -16,7 +17,7 @@ function escapeHtml(value: string) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;")
+    .replace(/'/g, "&#039;");
 }
 
 function buildEmailHtml({
@@ -25,14 +26,14 @@ function buildEmailHtml({
   tipo,
   mensaje,
 }: {
-  nombre: string
-  telefono: string
-  tipo: string
-  mensaje: string
+  nombre: string;
+  telefono: string;
+  tipo: string;
+  mensaje: string;
 }) {
-  const brandBlueDark = "#132342"
-  const brandGold = "#C9A24D"
-  const rowBg = "#f7f5f0"
+  const brandBlueDark = "#132342";
+  const brandGold = "#C9A24D";
+  const rowBg = "#f7f5f0";
 
   const row = (label: string, value: string) => `
     <tr>
@@ -45,7 +46,7 @@ function buildEmailHtml({
         </p>
       </td>
     </tr>
-  `
+  `;
 
   return `
   <div style="background-color:#eef0f4;padding:32px 12px;">
@@ -95,40 +96,45 @@ function buildEmailHtml({
       </tr>
     </table>
   </div>
-  `
+  `;
 }
 
 export async function POST(request: Request) {
-  const gmailUser = process.env.GMAIL_USER
-  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
 
   if (!gmailUser || !gmailAppPassword) {
     console.error(
-      "Faltan configurar GMAIL_USER y/o GMAIL_APP_PASSWORD en las variables de entorno."
-    )
+      "Faltan configurar GMAIL_USER y/o GMAIL_APP_PASSWORD en las variables de entorno.",
+    );
     return NextResponse.json(
       { error: "El servicio de correo no está configurado." },
-      { status: 500 }
-    )
+      { status: 500 },
+    );
   }
 
-  let body: ContactPayload
+  let body: ContactPayload;
   try {
-    body = await request.json()
+    body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 })
+    return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 });
   }
 
-  const nombre = body.nombre?.trim()
-  const telefono = body.telefono?.trim()
-  const tipo = body.tipo?.trim() || "No especificado"
-  const mensaje = body.mensaje?.trim() || "(sin mensaje)"
+  // Honeypot: si un bot llenó este campo oculto, respondemos "ok" sin enviar el correo
+  if (body.empresa_web) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const nombre = body.nombre?.trim();
+  const telefono = body.telefono?.trim();
+  const tipo = body.tipo?.trim() || "No especificado";
+  const mensaje = body.mensaje?.trim() || "(sin mensaje)";
 
   if (!nombre || !telefono) {
     return NextResponse.json(
       { error: "Nombre y teléfono son obligatorios." },
-      { status: 400 }
-    )
+      { status: 400 },
+    );
   }
 
   const transporter = nodemailer.createTransport({
@@ -137,7 +143,7 @@ export async function POST(request: Request) {
       user: gmailUser,
       pass: gmailAppPassword,
     },
-  })
+  });
 
   try {
     await transporter.sendMail({
@@ -151,14 +157,14 @@ export async function POST(request: Request) {
         tipo: escapeHtml(tipo),
         mensaje: escapeHtml(mensaje),
       }),
-    })
+    });
 
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Error enviando el correo con Nodemailer/Gmail:", err)
+    console.error("Error enviando el correo con Nodemailer/Gmail:", err);
     return NextResponse.json(
       { error: "No se pudo enviar el mensaje. Intenta de nuevo." },
-      { status: 502 }
-    )
+      { status: 502 },
+    );
   }
 }

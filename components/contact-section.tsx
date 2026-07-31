@@ -33,6 +33,7 @@ export function ContactSection() {
       telefono: String(formData.get("telefono") || ""),
       tipo: tipoVehiculo,
       mensaje: String(formData.get("mensaje") || ""),
+      empresa_web: String(formData.get("empresa_web") || ""),
     };
 
     try {
@@ -210,6 +211,15 @@ export function ContactSection() {
                     className="resize-none border-white/15 bg-white/5 text-white placeholder:text-white/40"
                   />
                 </div>
+
+                <input
+                  type="text"
+                  name="empresa_web"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-px w-px overflow-hidden"
+                />
 
                 {errorMessage && (
                   <p className="mt-4 text-sm text-red-400">{errorMessage}</p>
