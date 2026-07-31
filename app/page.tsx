@@ -177,7 +177,7 @@ export default function Page() {
         title="Buses"
         subtitle="Máxima capacidad y confort para largas distancias"
         description="Estructuras reforzadas y aislamiento acústico premium diseñados para recorridos exigentes. Cada bus se construye con materiales antiflama y sistemas de seguridad certificados que protegen a cada pasajero kilómetro tras kilómetro."
-        backgroundImage="/images/section-bus.png"
+        backgroundImage="/images/section-bus.webp"
         projects={busProjects}
       />
 
@@ -186,7 +186,7 @@ export default function Page() {
         title="Busetas"
         subtitle="Versatilidad y eficiencia urbana"
         description="Optimizadas para la movilidad de la ciudad, nuestras busetas ofrecen accesos amplios, distribución inteligente del espacio y una carrocería ligera que reduce el consumo sin sacrificar resistencia ni confort para los pasajeros."
-        backgroundImage="/images/section-buseta.png"
+        backgroundImage="/images/section-buseta.webp"
         projects={busetaProjects}
       />
 
@@ -195,7 +195,7 @@ export default function Page() {
         title="Midibuses"
         subtitle="El equilibrio perfecto para rutas intermunicipales"
         description="El punto medio ideal entre capacidad y maniobrabilidad. Con suspensión adaptada a caminos variables y asientos ergonómicos de largo aliento, el midibus Invicar garantiza viajes seguros y cómodos entre municipios."
-        backgroundImage="/images/section-buseton.png"
+        backgroundImage="/images/section-buseton.webp"
         projects={midibusProjects}
       />
 
