@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { Gallery3D } from "@/components/gallery-3d";
 
@@ -35,10 +36,12 @@ export function VehicleSection({
       className="relative flex min-h-screen snap-start flex-col justify-between overflow-hidden py-24"
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           src={backgroundImage || "/placeholder.svg"}
           alt={`${title} fabricados por Invicar`}
-          className="h-full w-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-b from-brand-blue-dark/75 via-black/45 to-brand-blue-dark/90" />
       </div>

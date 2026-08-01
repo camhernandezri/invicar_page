@@ -1,91 +1,97 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
-import type { TouchEvent } from "react"
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { TouchEvent } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 type Project = {
-  src: string
-  alt: string
-  caption: string
-}
+  src: string;
+  alt: string;
+  caption: string;
+};
 
 type Gallery3DProps = {
-  projects: Project[]
-  initialIndex?: number
-  onClose: () => void
-}
+  projects: Project[];
+  initialIndex?: number;
+  onClose: () => void;
+};
 
-const CLOSE_ANIMATION_MS = 250
+const CLOSE_ANIMATION_MS = 250;
 
-export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProps) {
-  const total = projects.length
+export function Gallery3D({
+  projects,
+  initialIndex = 0,
+  onClose,
+}: Gallery3DProps) {
+  const total = projects.length;
   const [currentIndex, setCurrentIndex] = useState(
-    ((initialIndex % total) + total) % total
-  )
-  const [isClosing, setIsClosing] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const touchStartX = useRef(0)
+    ((initialIndex % total) + total) % total,
+  );
+  const [isClosing, setIsClosing] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const touchStartX = useRef(0);
 
   // Dispara la transición de entrada en el siguiente frame, para que el
   // navegador anime desde el estado inicial (oculto) al visible.
   useEffect(() => {
-    const id = requestAnimationFrame(() => setIsVisible(true))
-    return () => cancelAnimationFrame(id)
-  }, [])
+    const id = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const handleClose = useCallback(() => {
-    setIsClosing(true)
-    window.setTimeout(onClose, CLOSE_ANIMATION_MS)
-  }, [onClose])
+    setIsClosing(true);
+    window.setTimeout(onClose, CLOSE_ANIMATION_MS);
+  }, [onClose]);
 
   const goNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % total)
-  }, [total])
+    setCurrentIndex((prev) => (prev + 1) % total);
+  }, [total]);
 
   const goPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + total) % total)
-  }, [total])
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
 
   // Bloquear el scroll de fondo mientras la galería está abierta.
   // El contenedor con scroll real es <main> (overflow-y-auto), no <body>,
   // así que hay que congelar ambos para evitar que la página "salte"
   // de sección al cerrar.
   useEffect(() => {
-    const scrollContainer = document.querySelector("main")
-    const originalBodyOverflow = document.body.style.overflow
+    const scrollContainer = document.querySelector("main");
+    const originalBodyOverflow = document.body.style.overflow;
     const originalMainOverflow = scrollContainer
       ? scrollContainer.style.overflow
-      : ""
+      : "";
 
-    document.body.style.overflow = "hidden"
-    if (scrollContainer) scrollContainer.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
+    if (scrollContainer) scrollContainer.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = originalBodyOverflow
-      if (scrollContainer) scrollContainer.style.overflow = originalMainOverflow
-    }
-  }, [])
+      document.body.style.overflow = originalBodyOverflow;
+      if (scrollContainer)
+        scrollContainer.style.overflow = originalMainOverflow;
+    };
+  }, []);
 
   // Navegación con teclado
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") handleClose()
-      if (e.key === "ArrowRight") goNext()
-      if (e.key === "ArrowLeft") goPrev()
+      if (e.key === "Escape") handleClose();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
     }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [goNext, goPrev, handleClose])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goNext, goPrev, handleClose]);
 
   function handleTouchStart(e: TouchEvent<HTMLDivElement>) {
-    touchStartX.current = e.touches[0].clientX
+    touchStartX.current = e.touches[0].clientX;
   }
 
   function handleTouchEnd(e: TouchEvent<HTMLDivElement>) {
-    const delta = e.changedTouches[0].clientX - touchStartX.current
-    if (delta > 50) goPrev()
-    if (delta < -50) goNext()
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (delta > 50) goPrev();
+    if (delta < -50) goNext();
   }
 
   return (
@@ -100,8 +106,8 @@ export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProp
       <button
         type="button"
         onClick={(e) => {
-          e.stopPropagation()
-          handleClose()
+          e.stopPropagation();
+          handleClose();
         }}
         aria-label="Cerrar galería"
         className="absolute right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-blue-dark sm:right-8 sm:top-8"
@@ -134,24 +140,24 @@ export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProp
           style={{ transformStyle: "preserve-3d" }}
         >
           {projects.map((project, i) => {
-            let diff = i - currentIndex
-            diff = ((diff % total) + total) % total
-            if (diff > total / 2) diff -= total
+            let diff = i - currentIndex;
+            diff = ((diff % total) + total) % total;
+            if (diff > total / 2) diff -= total;
 
-            if (Math.abs(diff) > 2) return null
+            if (Math.abs(diff) > 2) return null;
 
-            const isCenter = diff === 0
-            const translateX = diff * 62
-            const rotateY = diff * -38
-            const scale = 1 - Math.min(Math.abs(diff), 3) * 0.18
-            const opacity = 1 - Math.min(Math.abs(diff), 3) * 0.35
-            const zIndex = 50 - Math.abs(diff)
+            const isCenter = diff === 0;
+            const translateX = diff * 62;
+            const rotateY = diff * -38;
+            const scale = 1 - Math.min(Math.abs(diff), 3) * 0.18;
+            const opacity = 1 - Math.min(Math.abs(diff), 3) * 0.35;
+            const zIndex = 50 - Math.abs(diff);
 
             return (
               <div
                 key={project.src}
                 onClick={() => {
-                  if (!isCenter) setCurrentIndex(i)
+                  if (!isCenter) setCurrentIndex(i);
                 }}
                 className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out ${
                   isCenter ? "cursor-default" : "cursor-pointer"
@@ -164,11 +170,13 @@ export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProp
                 }}
               >
                 <figure className="flex h-full w-full max-w-2xl flex-col items-center gap-4 rounded-2xl border border-brand-gold/20 bg-brand-blue-dark/30 p-3 shadow-2xl shadow-black/40 backdrop-blur-md">
-                  <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-brand-blue-dark/40 backdrop-blur-sm">
-                    <img
+                  <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-brand-blue-dark/40 backdrop-blur-sm">
+                    <Image
                       src={project.src || "/placeholder.svg"}
                       alt={project.alt}
-                      className="h-full w-full object-contain"
+                      fill
+                      sizes="(min-width: 1024px) 800px, 100vw"
+                      className="object-contain"
                       draggable={false}
                     />
                   </div>
@@ -179,7 +187,7 @@ export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProp
                   )}
                 </figure>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -193,5 +201,5 @@ export function Gallery3D({ projects, initialIndex = 0, onClose }: Gallery3DProp
         </button>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,5 @@
 import { Target, Eye } from "lucide-react";
+import Image from "next/image";
 
 const pillars = [
   {
@@ -65,10 +66,12 @@ export function AboutSection() {
       className="relative flex min-h-screen snap-start flex-col items-center justify-center overflow-hidden bg-brand-blue-dark py-24"
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/combo3.jpeg"
           alt="Instalaciones de fabricación Invicar"
-          className="h-full w-full object-cover opacity-25"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-linear-to-b from-brand-blue-dark/95 via-brand-blue-dark/90 to-black/95" />
       </div>
@@ -130,10 +133,12 @@ export function AboutSection() {
                   <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-brand-gold/40">
                     {/* Imagen de fondo */}
                     {item.image && (
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.title}
-                        className="absolute inset-0 h-full w-full object-cover opacity-30 pointer-events-none transition-transform duration-500 hover:scale-105"
+                        fill
+                        sizes="(min-width: 768px) 448px, 100vw"
+                        className="object-cover opacity-30 pointer-events-none transition-transform duration-500 hover:scale-105"
                       />
                     )}
 

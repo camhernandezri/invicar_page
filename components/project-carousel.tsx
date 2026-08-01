@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Project = {
@@ -106,10 +107,12 @@ export function ProjectCarousel({
             aria-label={`Abrir galería: ${project.caption}`}
             className="group relative aspect-4/3 w-72 flex-none cursor-pointer snap-start overflow-hidden rounded-xl border border-white/10 bg-white/2 transition-colors hover:border-brand-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:w-80"
           >
-            <img
+            <Image
               src={project.src || "/placeholder.svg"}
               alt={project.alt}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              sizes="(min-width: 640px) 320px, 288px"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-brand-blue-dark/5 to-transparent p-4">
               <figcaption className="flex items-center gap-2 text-sm font-medium text-white">

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function HeroSection() {
   return (
     <section
@@ -5,10 +7,13 @@ export function HeroSection() {
       className="relative flex min-h-screen snap-start flex-col items-center justify-between overflow-hidden py-28"
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/portada-invicar.jpg"
           alt="Bus de pasajeros moderno fabricado por Invicar"
-          className="h-full w-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-b from-brand-blue-dark/70 via-black/30 to-brand-blue-dark/85" />
       </div>

@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -67,10 +68,12 @@ export function ContactSection() {
       className="relative flex min-h-screen snap-start items-center overflow-hidden py-24"
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/combo2.jpeg"
           alt="Carrocería Invicar en acabado premium"
-          className="h-full w-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-b from-brand-blue-dark/90 via-brand-blue-dark/80 to-black/95" />
       </div>
