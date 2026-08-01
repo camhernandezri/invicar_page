@@ -94,8 +94,8 @@ const jsonLd = {
   name: "Invicar",
   image: "https://invicar.com/images/portada-invicar.jpg",
   url: "https://invicar.com",
-  telephone: "+57 300 123 4567",
-  email: "comercial@invicar.com.co",
+  telephone: "+57 310 299 9944",
+  email: "ventas@invicar.com",
   description:
     "Fabricación de carrocerías para buses, busetas y midibuses en Duitama, Boyacá, Colombia.",
   address: {

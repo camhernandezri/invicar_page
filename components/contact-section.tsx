@@ -110,25 +110,25 @@ export function ContactSection() {
               </span>
             </a>
             <a
-              href="tel:+573001234567"
+              href="tel:+573102999944"
               className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-colors hover:bg-white/10"
             >
               <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold">
                 <Phone className="h-5 w-5" />
               </span>
               <span className="text-sm leading-relaxed text-white/80">
-                +57 300 123 4567
+                +57 310 299 9944
               </span>
             </a>
             <a
-              href="mailto:comercial@invicar.com.co"
+              href="mailto:ventas@invicar.com"
               className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-colors hover:bg-white/10"
             >
               <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold">
                 <Mail className="h-5 w-5" />
               </span>
               <span className="text-sm leading-relaxed text-white/80">
-                comercial@invicar.com.co
+                ventas@invicar.com
               </span>
             </a>
           </div>
@@ -172,7 +172,7 @@ export function ContactSection() {
                       name="telefono"
                       type="tel"
                       required
-                      placeholder="Ej. 300 123 4567"
+                      placeholder="Ej. 310 299 9944"
                       className="border-white/15 bg-white/5 text-white placeholder:text-white/40"
                     />
                   </div>
